@@ -78,3 +78,15 @@
 	height: 40vh;
 	width: 40vh;
 }
+table {
+	background-color: whitesmoke;
+	color: black;
+}
+table tr {
+}
+table td,
+th {
+	padding: 1rem;
+	border-collapse: collapse;
+	border: 1px solid black;
+}

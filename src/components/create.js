@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const Create = () => {
 	const [firstName, setFirstName] = useState("");
@@ -15,33 +17,41 @@ const Create = () => {
 		console.log(firstName, lastName, checkbox);
 	};
 	return (
-		<form className="create-form" onSubmit={postData}>
-			<label>First Name</label>
+		<div className="main">
+			<h2 className="main-header">React crud operation</h2>
 
-			<input
-				placeholder="First Name"
-				onChange={(e) => setFirstName(e.target.value)}
-			/>
-			<br />
+			<Form className="create-form">
+				<Form.Field>
+					<label>First Name</label>
 
-			<label>Last Name</label>
-			<input
-				placeholder="Last Name"
-				onChange={(e) => setLastName(e.target.value)}
-			/>
-			<br />
+					<input
+						placeholder="First Name"
+						onChange={(e) => setFirstName(e.target.value)}
+					/>
+					<br />
+				</Form.Field>
+				<Form.Field>
+					<label>Last Name</label>
+					<input
+						placeholder="Last Name"
+						onChange={(e) => setLastName(e.target.value)}
+					/>
+					<br />
+				</Form.Field>
+				<Form.Field>
+					<Checkbox
+						label="I agree to the terms and conditions"
+						onChange={(e) => setCheckbox(!checkbox)}
+					/>
+				</Form.Field>
 
-			<input
-				type="checkbox"
-				id="terms"
-				name="terms"
-				onChange={(e) => setCheckbox(!checkbox)}
-			/>
-			<label>I agree to the Terms and Conditions</label>
-			<button className="submit-button" type="submit">
-				Submit
-			</button>
-		</form>
+				<Link to="/read">
+					<Button type="submit" onClick={postData}>
+						Submit
+					</Button>
+				</Link>
+			</Form>
+		</div>
 	);
 };
 
