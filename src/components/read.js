@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Table, Button, TableBody } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Read = () => {
+	const navigate = useNavigate();
 	const [apiData, setApiData] = useState([]);
 	useEffect(() => {
 		axios
@@ -39,7 +40,7 @@ const Read = () => {
 
 	return (
 		<div className="main">
-			<h2 className="main-header">React Crud Operations</h2>
+			<h2 className="main-header">React Read Operations</h2>
 			<Table>
 				<Table.Header>
 					<Table.Row>
@@ -47,22 +48,31 @@ const Read = () => {
 						<Table.HeaderCell>Last Name</Table.HeaderCell>
 						<Table.HeaderCell>Checked</Table.HeaderCell>
 						<Table.HeaderCell>Update</Table.HeaderCell>
+						<Table.HeaderCell>Delete</Table.HeaderCell>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{apiData.map((data) => {
+					{apiData.map((data, index) => {
 						return (
-							<Table.Row>
+							<Table.Row key={index}>
 								<Table.Cell>{data.firstName}</Table.Cell>
 								<Table.Cell>{data.lastName}</Table.Cell>
 								<Table.Cell>
 									{data.checkbox ? `Checked` : `Unchecked`}
 								</Table.Cell>
-								<Link to="/update">
-									<Table.Cell>
-										<button onClick={() => setData(data)}>Update</button>
-									</Table.Cell>
-								</Link>
+								{/* <Link to="/update"> */}
+								<Table.Cell>
+									<button
+										onClick={() => {
+											navigate("/update", { replace: true });
+											setData(data);
+										}}
+									>
+										Update
+									</button>
+									{/* <button onClick={() => setData(data)}>Update</button> */}
+								</Table.Cell>
+								{/* </Link> */}
 								<Table.Cell>
 									<Button onClick={() => onDelete(data.id)}>Delete</Button>
 								</Table.Cell>

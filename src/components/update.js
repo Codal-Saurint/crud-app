@@ -27,7 +27,7 @@ const Update = () => {
 	return (
 		<div className="main">
 			<h2 className="main-header">React Update operation</h2>
-			<Form>
+			<Form className="create-form">
 				<Form.Field>
 					<label>First Name</label>
 					<input

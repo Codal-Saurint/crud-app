@@ -7,8 +7,8 @@ const Create = () => {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [checkbox, setCheckbox] = useState(false);
-	const postData = (e) => {
-		e.preventDefault();
+	const postData = () => {
+		//e.preventDefault();
 		axios.post("https://6270ed216a36d4d62c1f0621.mockapi.io/fakeData", {
 			firstName,
 			lastName,
@@ -18,7 +18,7 @@ const Create = () => {
 	};
 	return (
 		<div className="main">
-			<h2 className="main-header">React crud operation</h2>
+			<h2 className="main-header">React Create operation</h2>
 
 			<Form className="create-form">
 				<Form.Field>
